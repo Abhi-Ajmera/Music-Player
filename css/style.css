@@ -6,7 +6,7 @@
 body{
     width: 100%;
     height: 100vh;
-    background-color: #131312;
+    background-color: #f6f6f6;
     font-family:  Verdana, sans-serif;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@ body{
 header{
     width: 100%;
     height: 95%;
-    border: 1px solid #fff;
+    border: 1px solid #ffffff;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
@@ -25,24 +25,27 @@ header .menu_slide, .song_slide{
     display: inline-block;
     width: 24.5%;
     height: 90%;
-    background-color: #111727;
-    box-shadow: 5px 0px 2px #090f1f;
-    color: #fff;
+    background-color: #f6f6f6;
+    color: #4c5262;
 }
 header .song_slide{
     width: 74.5%;
-    background: #0b1320;
+    background: #f6f6f6;
 }
 header .master_play{
     width: 100%;
     height: 10%;
-    background-color: #111727;
+    background-color: #f6f6f6;
     box-shadow: 1px 3px 8px #090f1f;
 }
-.menu_slide h1{
-    font-size: 15px;
-    margin: 1.2vw 0vw 0vw 2vw;
-    font-weight: 500;
+.menu_slide span{
+    margin: 4px;
+    text-align: center;
+}
+.menu_slide span img{
+    
+    height: 50px;
+    width: 80%;
 }
 .playlist{
     margin: 3.5vw 0px 0px 1.6vw;
@@ -57,7 +60,7 @@ header .master_play{
     transition: .3s linear;
 }
 .playlist h4:hover{
-    color: #fff;
+    color: #36e2ec;
 }
 .playlist h4 span{
     position: relative;
@@ -195,7 +198,7 @@ header .master_play{
     width: 130px;
    font-size: 13px;
    margin-left: 15px;
-   color: #fff;
+   color: #4c5262;
    line-height: 15px;
 }
 .master_play h5 .subtitle{
@@ -204,7 +207,7 @@ header .master_play{
 }
 .master_play h5 .icon{
    font-size: 20px;
-   color: #fff;
+   color: #4c5262;
    margin: 0px 20px 0px 40px;
 }
 .master_play h5 .icon .bi{
@@ -219,7 +222,7 @@ header .master_play{
    transition: 0.3s linear;
 }
 .master_play span{
-    color: #fff;
+    color: #4c5262;
     width: 32px;
     font-size: 11px;
     font-weight: 400;
@@ -280,7 +283,7 @@ header .master_play{
 }
 .master_play .vol .bi{
     position: absolute;
-    color: #fff;
+    color: #4c5262;
     font-size: 25px;        
     top: -17px;
     left: -30px;
@@ -359,10 +362,10 @@ header .master_play{
     transition: 0.3s linear;
 }
 .song_slide nav ul li:hover{
-    color: #fff;
+    color: #4c5262;
 }
 .song_slide nav ul li:nth-child(1){
-    color: #fff;
+    color: #4c5262;
 }
 .song_slide nav ul li span{
     position: absolute;
@@ -379,6 +382,7 @@ header .master_play{
     padding: 1px 10px;
     border-radius: 20px;
     color: gray;
+    box-shadow: inset 0px 0px 3px #090f1f;
 }
 .song_slide nav .search::before{
     content: '';
@@ -399,7 +403,7 @@ header .master_play{
     outline: none;
     border: none;
     padding: 0px 10px;
-    color: #fff;
+    color: #4c5262;
     font-size: 12px;
 }
 .song_slide nav .user{
@@ -414,7 +418,6 @@ header .master_play{
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    box-shadow: 2px 2px 8px #131312;
 }
 .song_slide .content{
     width: 90%;
@@ -443,7 +446,7 @@ header .master_play{
     outline: none;
     border-radius: 20px;
     background: #5adae0;
-    color: #fff;
+    color: #4c5262;
     cursor: pointer;
     transition: 0.3s linear;
 }
@@ -465,7 +468,6 @@ header .master_play{
 .song_slide .popular_song{
     width: 90%;
     height: auto;
-    /* border: 1px solid #fff; */
     margin: auto;
     margin-top: 15px;
 }
@@ -501,7 +503,7 @@ header .master_play{
     transition: 0.3s linear;  
 }
 .song_slide .popular_song .pop_song li:hover{
-    background: rgb(105, 105, 170,0.1);  
+    background: #36e2ec;  
 }
 .song_slide .popular_song .pop_song li .img_play{
     position: relative;
@@ -518,6 +520,7 @@ header .master_play{
 .song_slide .popular_song .pop_song li .img_play .bi{
     position: absolute;
     font-size: 20px;
+    color: #36e2ec;
     cursor: pointer;
     transition: 0.3s linear;
     opacity: 0;
