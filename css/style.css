@@ -40,12 +40,9 @@ header .master_play{
 }
 .menu_slide span{
     margin: 4px;
-    text-align: center;
 }
 .menu_slide span img{
-    
-    height: 50px;
-    width: 80%;
+    width: 240px;
 }
 .playlist{
     margin: 3.5vw 0px 0px 1.6vw;
@@ -92,7 +89,7 @@ header .master_play{
     display: flex;
     margin-right: 20px;
 }
-.menu_song{
+/* .menu_song{
     width: 100%;
     height: 20vw;
     margin-top: 3vw;
@@ -133,7 +130,7 @@ header .master_play{
     right: 18px;
     top: 10px;
     font-size: 16px;
-}
+} */
 .master_play {
     display: flex;
     align-items: center;
@@ -205,16 +202,16 @@ header .master_play{
    font-size: 11px;
    color: #4c5262;
 }
-.master_play h5 .icon{
+.master_play .icon{
    font-size: 20px;
    color: #4c5262;
    margin: 0px 20px 0px 40px;
 }
-.master_play h5 .icon .bi{
+.master_play .icon .bi{
    cursor: pointer;
    outline: none;
 }
-.master_play h5 .icon .bi:nth-child(2){
+.master_play .icon .bi:nth-child(2){
    border: 1px solid rgb(105,105,170,0.1);
    border-radius: 50%;
    padding: 1px 3px 0px 6px;
@@ -583,4 +580,20 @@ header .master_play{
     height: 100%;
     border-radius: 50%;
     position: absolute;
+}
+
+@media screen and (max-width: 1200px) {
+    .master_play .icon{
+        font-size: 16px;
+        margin: 0px 0px 0px 0px;
+    }
+    .master_play .icon .bi:nth-child(2){
+        padding: 1px 1px 1px 3px;
+        margin: 0px 0px;
+     }
+    
+}
+
+@media screen and (max-width: 991px) {
+
 }
