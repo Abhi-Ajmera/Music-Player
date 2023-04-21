@@ -171,32 +171,39 @@ Array.from(document.getElementsByClassName("playListPlay")).forEach((ele) => {
   });
 });
 
-function toMinSec(time){
-    let min =  Math.floor(time / 60);
-    let sec =  Math.floor(time % 60);
-    if (sec < 10){
-        sec = "0"+sec;
-    }
-    return (min + ":" +sec);
-};
+function toMinSec(time) {
+  let min = Math.floor(time / 60);
+  let sec = Math.floor(time % 60);
+  if (sec < 10) {
+    sec = "0" + sec;
+  }
+  return min + ":" + sec;
+}
 
 let currentTime = document.getElementById("currentStart");
 let totalTime = document.getElementById("currentEnd");
+let seek = document.getElementById("seek");
+let bar2 = document.getElementById("bar2");
+let dot = document.getElementsByClassName("dot")[0];
 
-music.addEventListener("timeupdate",()=>{
-    let musicCurrent = music.currentTime;
-    let musicDuration = music.duration;
+// timing
+music.addEventListener("timeupdate", () => {
+  let musicCurrent = music.currentTime;
+  let musicDuration = music.duration;
+  currentTime.innerText = toMinSec(musicCurrent);
+  totalTime.innerText = toMinSec(musicDuration);
 
-    currentTime.innerText = toMinSec(musicCurrent);
-    totalTime.innerText = toMinSec(musicDuration);
+  // time bar
+  let progressBar = parseInt((musicCurrent / musicDuration) * 100);
+  seek.value = progressBar;
+  bar2.style.width = progressBar + "%";
+  dot.style.left = progressBar + "%";
+
+  // on change seek bar
+  seek.addEventListener("change", () => {
+    music.currentTime = (seek.value * musicDuration) / 100;
+  });
 });
-
-
-
-
-
-
-
 
 // for songs queue
 let pop_song_left = document.getElementById("pop_song_left");
@@ -209,6 +216,84 @@ pop_song_right.addEventListener("click", () => {
 
 pop_song_left.addEventListener("click", () => {
   pop_song.scrollLeft -= 400;
+});
+
+// volume
+let volumeIcon = document.getElementById("vol_Icon");
+let volume = document.getElementById("vol");
+let volumeBar = document.getElementsByClassName("vol_bar")[0];
+let volumeDot = document.getElementById("vol_dot");
+
+volume.addEventListener("change", () => {
+  if (volume.value == 0) {
+    volumeIcon.classList.remove("bi-volume-up-fill");
+    volumeIcon.classList.remove("bi-volume-down-fill");
+    volumeIcon.classList.add("bi-volume-mute-fill");
+  }
+  if (volume.value > 0 && volume.value < 70) {
+    volumeIcon.classList.remove("bi-volume-up-fill");
+    volumeIcon.classList.add("bi-volume-down-fill");
+    volumeIcon.classList.remove("bi-volume-mute-fill");
+  }
+  if (volume.value > 70) {
+    volumeIcon.classList.add("bi-volume-up-fill");
+    volumeIcon.classList.remove("bi-volume-down-fill");
+    volumeIcon.classList.remove("bi-volume-mute-fill");
+  }
+
+  let newVol = volume.value;
+  volumeBar.style.width = newVol + "%";
+  volumeDot.style.left = newVol + "%";
+  music.volume = newVol / 100;
+});
+
+let previous = document.getElementById("previous");
+let next = document.getElementById("next");
+
+previous.addEventListener("click", () => {
+  index--;
+  if (index < 1) {
+    index = Array.from(document.getElementsByClassName("playListPlay")).length;
+  }
+  let newIndex = String(index);
+  clickedSong = songs.filter((s) => s.id === newIndex);
+  clickedSong.forEach((ele) => {
+    // source and text change
+    music.src = "Songs/" + ele.songName + ".mp3";
+    posterInMasterPlay.src = ele.poster;
+    titleInMasterPlay.innerHTML = `<h5 id="Title_master_play"> ${ele.songName} <br>
+          <div class="subtitle"> ${ele.artist} </div>
+          </h5>`;
+
+    // css change
+    masterPlay.classList.remove("bi-play-fill");
+    masterPlay.classList.add("bi-pause-fill");
+    wave.classList.add("active2");
+    music.play();
+  });
+});
+
+next.addEventListener("click", () => {
+  index++;
+  if (index >=  Array.from(document.getElementsByClassName("playListPlay")).length) {
+    index = 1;
+  }
+  let newIndex = String(index);
+  clickedSong = songs.filter((s) => s.id === newIndex);
+  clickedSong.forEach((ele) => {
+    // source and text change
+    music.src = "Songs/" + ele.songName + ".mp3";
+    posterInMasterPlay.src = ele.poster;
+    titleInMasterPlay.innerHTML = `<h5 id="Title_master_play"> ${ele.songName} <br>
+          <div class="subtitle"> ${ele.artist} </div>
+          </h5>`;
+
+    // css change
+    masterPlay.classList.remove("bi-play-fill");
+    masterPlay.classList.add("bi-pause-fill");
+    wave.classList.add("active2");
+    music.play();
+  });
 });
 
 // for artist queue
